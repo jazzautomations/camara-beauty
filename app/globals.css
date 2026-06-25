@@ -465,3 +465,122 @@ body {
 .section-header .label-brand { display: block; margin-bottom: 16px; }
 .section-header .heading-1 { display: block; }
 .section-header .divider-gold { margin-top: 16px; }
+
+/* ===== TRUST STRIP ===== */
+.trust-strip {
+  background: var(--color-black);
+  border-bottom: 1px solid rgba(212,175,55,0.12);
+  overflow: hidden;
+}
+.trust-strip-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.trust-strip-inner::-webkit-scrollbar { display: none; }
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  padding: 14px 28px;
+  border-right: 1px solid rgba(212,175,55,0.1);
+  flex-shrink: 0;
+}
+.trust-item:last-child { border-right: none; }
+
+/* ===== PROCESS STEPS ===== */
+.step-number {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-gold);
+  flex-shrink: 0;
+  margin: 0 auto 20px;
+  background: rgba(212,175,55,0.04);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.step-card:hover .step-number {
+  background: rgba(212,175,55,0.12);
+  transform: scale(1.05);
+}
+
+/* ===== FAQ ACCORDION ===== */
+.faq-item {
+  border-bottom: 1px solid #E8E8E8;
+}
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+  transition: color 0.2s ease;
+}
+.faq-trigger:hover { color: var(--color-gold); }
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.3s ease, border-color 0.2s ease;
+}
+.faq-icon.open { transform: rotate(45deg); border-color: var(--color-gold); color: var(--color-gold); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-answer.open { max-height: 240px; }
+.faq-answer-inner { padding-bottom: 20px; }
+
+/* ===== INCLUDED LIST (VIP card) ===== */
+.included-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #4A4A4A;
+  padding: 5px 0;
+  line-height: 1.5;
+}
+.included-check {
+  color: var(--color-gold);
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ===== DIFFERENTIATOR CARDS ===== */
+.diff-card {
+  padding: 28px;
+  border-radius: var(--radius-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.diff-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+}
