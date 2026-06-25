@@ -2,30 +2,29 @@ import Image from "next/image";
 import Reveal from "./reveal";
 
 const services = [
-  { name: "Maquiagem", price: "R$ 380", desc: "Acabamento editorial, blindada e durável." },
-  { name: "Penteado", price: "R$ 310", desc: "Visagismo elegante, textura e fixação de alto padrão." },
-  { name: "Combo Make + Hair", price: "R$ 590", desc: "A escolha mais vendida para convidadas e madrinhas." },
-  { name: "Noiva Civil", price: "R$ 900", desc: "Make, cílios e penteado para o casamento civil." },
-  { name: "Noiva Light", price: "R$ 1.400", desc: "Mais completo, com mapeamento facial e experiência premium." },
-  { name: "Noiva VIP", price: "R$ 2.200", desc: "Prévia, blindagem, aplique e presença total no grande dia." },
+  { name: "Maquiagem", price: "R$ 380", desc: "Maquiagem blindada com produtos importados. Durou mais de 11 horas sem retoque em eventos reais." },
+  { name: "Penteado", price: "R$ 310", desc: "Visagismo e fixação de alto padrão. Tranças, coques, meios-presos — tudo pensado pro seu rosto e estilo." },
+  { name: "Combo Make + Hair", price: "R$ 590", desc: "A escolha mais pedida por madrinhas e convidadas. Maquiagem e penteado num único atendimento." },
+  { name: "Noiva Civil", price: "R$ 900", desc: "Maquiagem, cílios e penteado para o casamento civil. Pronta em pouco tempo, linda o dia todo." },
+  { name: "Noiva Light", price: "R$ 1.400", desc: "Mapeamento facial, maquiagem blindada, suporte para véu e auxílio no vestido. Experiência completa." },
+  { name: "Noiva VIP", price: "R$ 2.200", desc: "Prévia com 30 dias de antecedência, aplique, making-of e suporte total no dia. Sem surpresas no casamento." },
 ];
 
 const portfolio = [
-  { src: "/images/hero-makeup.png", alt: "Make" },
-  { src: "/images/noiva-tranca.jpg", alt: "Noiva com trança" },
-  { src: "/images/gabi-penteando.png", alt: "Gabi penteando" },
-  { src: "/images/veu-noiva.jpg", alt: "Véu" },
-  { src: "/images/retrato-glam.jpg", alt: "Retrato glam" },
-  { src: "/images/abraco-noiva.jpg", alt: "Abraço noiva" },
-  { src: "/images/detalhe-orquidea.jpg", alt: "Detalhe orquídea" },
-  { src: "/images/make-aplicacao.jpg", alt: "Aplicação make" },
+  { src: "/images/hero-makeup.png", alt: "Maquiagem sendo aplicada em noiva", span: "md:col-span-7 md:row-span-2 min-h-[620px]" },
+  { src: "/images/noiva-tranca.jpg", alt: "Noiva com trança elaborada e flores", span: "md:col-span-5 min-h-[300px]" },
+  { src: "/images/gabi-penteando.png", alt: "Gabriela penteando cliente", span: "md:col-span-5 min-h-[300px]" },
+  { src: "/images/veu-noiva.jpg", alt: "Ajuste do véu da noiva", span: "md:col-span-4 min-h-[300px]" },
+  { src: "/images/retrato-glam.jpg", alt: "Retrato de noiva com maquiagem glam", span: "md:col-span-4 min-h-[300px]" },
+  { src: "/images/abraco-noiva.jpg", alt: "Noiva abraçando amiga", span: "md:col-span-4 min-h-[300px]" },
+  { src: "/images/detalhe-orquidea.jpg", alt: "Detalhe de orquídea no penteado", span: "md:col-span-6 min-h-[300px]" },
+  { src: "/images/make-aplicacao.jpg", alt: "Aplicação de maquiagem", span: "md:col-span-6 min-h-[300px]" },
 ];
 
 const testimonials = [
-  "A melhor maquiadora do mundo.",
-  "Durou a festa inteira sem retoque.",
-  "Paz, profissionalismo e resultado absurdo.",
-  "A sensação foi de editorial, não de produção comum.",
+  { quote: "A maquiagem durou mais de 11 horas sem nenhum retoque. Fiquei intacta do casamento até o dia seguinte.", author: "Depoimento de noiva" },
+  { quote: "Transmitiu paz e profissionalismo do início ao fim. Todos os convidados elogiaram.", author: "Depoimento de madrinha" },
+  { quote: "A melhor maquiadora do mundo. Já indiquei para sogra, madrinhas e amigas.", author: "Cliente recorrente" },
 ];
 
 export default function Home() {
@@ -49,20 +48,20 @@ export default function Home() {
       </header>
 
       <section className="relative min-h-[100svh] overflow-hidden">
-        <Image src="/images/hero-makeup.png" alt="Camara Beauty" fill priority className="hero-img" />
+        <Image src="/images/hero-makeup.png" alt="Maquiagem sendo aplicada em noiva" fill priority className="hero-img" />
         <div className="hero-grad" />
         <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl items-end px-6 pb-24 pt-32 md:pb-32">
           <div className="max-w-4xl reveal in">
-            <p className="eyebrow mb-6">São Paulo • Beleza nupcial • 10 anos de experiência</p>
+            <p className="eyebrow mb-6">São Paulo • Beleza nupcial desde 2016</p>
             <h1 className="serif max-w-4xl text-6xl leading-[0.92] md:text-8xl">
-              Beleza <span className="gold">premium</span> para noivas que não querem parecer só arrumadas.
+              No dia em que todos vão olhar pra você, a maquiagem precisa durar.
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-white/72 md:text-xl">
-              Um site que vende serviço de alto valor precisa parecer alto valor. A Camara Beauty entrega presença, naturalidade e uma assinatura visual editorial, com produção pensada para durar e fotografar lindamente.
+              Maquiagem blindada, penteado com visagismo e produtos importados de marcas premium. A Gabi já atendeu centenas de noivas em São Paulo — e cada uma chegou ao fim da festa com a mesma maquiagem da manhã.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a href="https://wa.me/5511948645727" className="btn-gold rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Quero meu orçamento</a>
-              <a href="#portfolio" className="btn-ghost rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Ver portfólio</a>
+              <a href="https://wa.me/5511948645727" className="btn-gold rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Reservar minha data</a>
+              <a href="#portfolio" className="btn-ghost rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Ver trabalhos</a>
             </div>
           </div>
         </div>
@@ -75,15 +74,18 @@ export default function Home() {
       <section id="sobre" className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="reveal">
-            <p className="eyebrow mb-4">Sobre a Gabriela</p>
-            <h2 className="serif max-w-3xl text-4xl leading-tight md:text-6xl">Hair & Makeup Stylist com formação internacional e olhar de editorial.</h2>
+            <p className="eyebrow mb-4">A profissional</p>
+            <h2 className="serif max-w-3xl text-4xl leading-tight md:text-6xl">Dez anos realçando a beleza que cada mulher já tem.</h2>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
-              A Gabriela começou cedo, se formou em São Paulo, Rio e Kryolan Buenos Aires, e construiu a Camara Beauty para entregar naturalidade, visagismo e acabamento impecável — não maquiagem genérica.
+              Gabriela Câmara começou aos 17 anos. Se formou em São Paulo, Rio de Janeiro e na Kryolan em Buenos Aires. Fundou a Camara Beauty em 2016, quando a demanda já era maior do que a agenda de uma pessoa só.
+            </p>
+            <p className="mt-4 max-w-2xl text-lg leading-8 text-white/72">
+              Hoje comanda uma equipe que atende noivas, madrinhas e convidadas — no ateliê da Alameda Dino Bueno ou onde a noiva precisar.
             </p>
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
               {[
-                "Ateliê em São Paulo",
-                "Atendimento a domicílio",
+                "Formação internacional (Kryolan)",
+                "Ateliê e domicílio",
                 "Parcelamento em até 12x",
               ].map((item) => (
                 <div key={item} className="price-card rounded-3xl p-5 text-sm tracking-wide text-white/75">
@@ -94,10 +96,10 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="tile min-h-[330px] rounded-[2rem] lg:min-h-[420px]">
-              <Image src="/images/gabi-contato.jpg" alt="Gabriela" width={800} height={1100} className="h-full w-full object-cover" />
+              <Image src="/images/gabi-contato.jpg" alt="Gabriela Câmara" width={800} height={1100} className="h-full w-full object-cover" />
             </div>
             <div className="tile min-h-[330px] rounded-[2rem] lg:min-h-[420px]">
-              <Image src="/images/gabi-produto.jpg" alt="Gabriela produto" width={800} height={1100} className="h-full w-full object-cover" />
+              <Image src="/images/gabi-produto.jpg" alt="Gabriela aplicando produto" width={800} height={1100} className="h-full w-full object-cover" />
             </div>
           </div>
         </div>
@@ -106,13 +108,13 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-6 pb-24">
         <div className="grid gap-4 lg:grid-cols-12">
           <div className="tile min-h-[260px] rounded-[2rem] lg:col-span-5">
-            <Image src="/images/preparacao-make.jpg" alt="Preparação" width={1200} height={900} className="h-full w-full object-cover" />
+            <Image src="/images/preparacao-make.jpg" alt="Preparação de maquiagem" width={1200} height={900} className="h-full w-full object-cover" />
           </div>
           <div className="tile min-h-[260px] rounded-[2rem] lg:col-span-4">
-            <Image src="/images/noiva-outdoor.jpg" alt="Noiva outdoor" width={1200} height={900} className="h-full w-full object-cover" />
+            <Image src="/images/noiva-outdoor.jpg" alt="Noiva em sessão de fotos externa" width={1200} height={900} className="h-full w-full object-cover" />
           </div>
           <div className="tile min-h-[260px] rounded-[2rem] lg:col-span-3">
-            <Image src="/images/grupo-feliz.jpg" alt="Grupo feliz" width={1200} height={900} className="h-full w-full object-cover" />
+            <Image src="/images/grupo-feliz.jpg" alt="Grupo de madrinhas" width={1200} height={900} className="h-full w-full object-cover" />
           </div>
         </div>
       </section>
@@ -122,9 +124,9 @@ export default function Home() {
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="eyebrow mb-4">Serviços</p>
-              <h2 className="serif text-4xl md:text-6xl">Tabela de valor que conversa com ticket de 3k.</h2>
+              <h2 className="serif text-4xl md:text-6xl">Do casamento civil ao pacote VIP completo.</h2>
             </div>
-            <p className="max-w-xl text-white/60">Preço e percepção precisam bater. O layout agora empurra confiança, não poluição visual.</p>
+            <p className="max-w-xl text-white/60">Sinal de 50% para reservar a data. Saldo no dia anterior ao evento. Tudo via WhatsApp.</p>
           </div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -149,15 +151,15 @@ export default function Home() {
       <section id="portfolio" className="mx-auto max-w-7xl px-6 py-24">
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="eyebrow mb-4">Portfólio real</p>
-            <h2 className="serif text-4xl md:text-6xl">Só as melhores imagens do PDF, sem firula.</h2>
+            <p className="eyebrow mb-4">Portfólio</p>
+            <h2 className="serif text-4xl md:text-6xl">Noivas reais. Resultados reais.</h2>
           </div>
-          <p className="max-w-xl text-white/60">Escolhi imagens com glamour, textura e emoção — as que mais parecem campanha premium.</p>
+          <p className="max-w-xl text-white/60">Cada foto é de um atendimento real da Camara Beauty. Sem banco de imagens, sem filtro.</p>
         </div>
 
         <div className="mt-12 grid gap-4 md:grid-cols-12">
-          {portfolio.map((item, i) => (
-            <div key={item.src} className={`tile rounded-[2rem] ${i === 0 ? "md:col-span-7 md:row-span-2 min-h-[620px]" : i === 1 ? "md:col-span-5 min-h-[300px]" : i === 2 ? "md:col-span-5 min-h-[300px]" : i === 3 ? "md:col-span-4 min-h-[300px]" : i === 4 ? "md:col-span-4 min-h-[300px]" : i === 5 ? "md:col-span-4 min-h-[300px]" : i === 6 ? "md:col-span-6 min-h-[300px]" : "md:col-span-6 min-h-[300px]"}`}>
+          {portfolio.map((item) => (
+            <div key={item.src} className={`tile rounded-[2rem] ${item.span}`}>
               <Image src={item.src} alt={item.alt} width={1400} height={1100} className="h-full w-full object-cover" />
             </div>
           ))}
@@ -167,16 +169,15 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
-            <p className="eyebrow mb-4">Feedbacks</p>
-            <h2 className="serif text-4xl md:text-6xl">Prova social sem parecer template de agência barata.</h2>
-            <p className="mt-5 max-w-xl text-white/65 leading-8">A marca já tem depoimentos fortes. O site só precisava tratá-los com a mesma elegância do serviço.</p>
+            <p className="eyebrow mb-4">Quem já viveu</p>
+            <h2 className="serif text-4xl md:text-6xl">O que as noivas dizem depois.</h2>
           </div>
           <div className="grid gap-4">
-            {testimonials.map((t, i) => (
-              <div key={t} className="price-card rounded-[1.6rem] p-6">
-                <div className="quote-mark">“</div>
-                <p className="-mt-8 pl-1 text-lg text-white/80">{t}</p>
-                <p className="mt-4 text-xs uppercase tracking-[0.25em] text-[var(--champagne)]">Cliente {i + 1}</p>
+            {testimonials.map((t) => (
+              <div key={t.quote} className="price-card rounded-[1.6rem] p-6">
+                <div className="quote-mark">&ldquo;</div>
+                <p className="-mt-8 pl-1 text-lg text-white/80">{t.quote}</p>
+                <p className="mt-4 text-xs uppercase tracking-[0.25em] text-[var(--champagne)]">{t.author}</p>
               </div>
             ))}
           </div>
@@ -186,10 +187,10 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-6 pb-24">
         <div className="grid gap-4 md:grid-cols-3">
           <div className="tile min-h-[280px] rounded-[2rem] md:col-span-2">
-            <Image src="/images/veu-noiva.jpg" alt="Véu" width={1400} height={900} className="h-full w-full object-cover" />
+            <Image src="/images/veu-noiva.jpg" alt="Ajuste do véu" width={1400} height={900} className="h-full w-full object-cover" />
           </div>
           <div className="tile min-h-[280px] rounded-[2rem]">
-            <Image src="/images/detalhe-orquidea.jpg" alt="Detalhe" width={900} height={900} className="h-full w-full object-cover" />
+            <Image src="/images/detalhe-orquidea.jpg" alt="Detalhe de orquídea no penteado" width={900} height={900} className="h-full w-full object-cover" />
           </div>
         </div>
       </section>
@@ -199,8 +200,12 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
               <p className="eyebrow mb-4">Contato</p>
-              <h2 className="serif text-4xl md:text-6xl">Agende antes da agenda sumir.</h2>
-              <p className="mt-6 max-w-xl text-white/65 leading-8">WhatsApp: (11) 9 4864-5727 • Instagram: @camarabeauty • Atelier: Alameda Dino Bueno, 663 — Centro, São Paulo.</p>
+              <h2 className="serif text-4xl md:text-6xl">Sua data pode já estar quase fechando.</h2>
+              <p className="mt-6 max-w-xl text-white/65 leading-8">
+                WhatsApp: (11) 9 4864-5727<br />
+                Instagram: @camarabeauty<br />
+                Ateliê: Alameda Dino Bueno, 663 — Centro, São Paulo
+              </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a href="https://wa.me/5511948645727" className="btn-gold rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Falar no WhatsApp</a>
                 <a href="https://www.instagram.com/camarabeauty/" className="btn-ghost rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Ver Instagram</a>
@@ -208,10 +213,10 @@ export default function Home() {
             </div>
             <div className="grid gap-4 md:grid-cols-2">
               <div className="tile min-h-[320px] rounded-[2rem]">
-                <Image src="/images/abraco-noiva.jpg" alt="Abraço" width={1000} height={1200} className="h-full w-full object-cover" />
+                <Image src="/images/abraco-noiva.jpg" alt="Noiva abraçando amiga" width={1000} height={1200} className="h-full w-full object-cover" />
               </div>
               <div className="tile min-h-[320px] rounded-[2rem]">
-                <Image src="/images/retrato-glam.jpg" alt="Retrato glam" width={1000} height={1200} className="h-full w-full object-cover" />
+                <Image src="/images/retrato-glam.jpg" alt="Retrato de noiva" width={1000} height={1200} className="h-full w-full object-cover" />
               </div>
             </div>
           </div>
