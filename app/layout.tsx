@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://camarabeauty.com.br"),
   title: "Camara Beauty | Hair & Makeup Studio — São Paulo",
   description: "Maquiagem e penteado para noivas, madrinhas e eventos em São Paulo. 10 anos de experiência, produtos importados, estilo Beauty. Agende sua data.",
   keywords: ["maquiagem noiva", "penteado noiva", "maquiagem casamento", "camara beauty", "gabriela camara", "maquiagem sao paulo", "hair stylist noiva"],
