@@ -5,74 +5,74 @@ const services = [
   {
     name: "Noiva VIP",
     price: "R$ 2.200",
-    desc: "Prévia, maquiagem blindada, aplique, making-of e presença total no dia.",
+    desc: "Tudo incluso: prévia com 30 dias de antecedência, maquiagem blindada, aplique, making-of e suporte completo no dia. Você chega no casamento sem nenhuma dúvida.",
   },
   {
     name: "Noiva Light",
     price: "R$ 1.400",
-    desc: "Mapeamento facial, make blindada e suporte para véu com acabamento premium.",
+    desc: "Mapeamento facial, maquiagem blindada, suporte para o véu e auxílio no vestido. Experiência completa para um dia sem preocupação.",
   },
   {
     name: "Noiva Civil",
     price: "R$ 900",
-    desc: "Maquiagem, cílios e penteado para casamento civil com leveza e segurança.",
+    desc: "Maquiagem, cílios e penteado para o casamento civil. Elegante, leve e pronto em pouco tempo.",
   },
   {
     name: "Combo Make + Hair",
     price: "R$ 590",
-    desc: "A escolha mais pedida por madrinhas e convidadas que querem sair impecáveis.",
+    desc: "A escolha mais pedida por madrinhas e convidadas. Maquiagem e penteado num único atendimento.",
   },
   {
     name: "Maquiagem",
     price: "R$ 380",
-    desc: "Acabamento premium, produtos importados e longa duração.",
+    desc: "Acabamento editorial com produtos importados. Durou mais de 11 horas sem retoque em eventos reais.",
   },
   {
     name: "Penteado",
     price: "R$ 310",
-    desc: "Visagismo, textura e estrutura para atravessar o evento inteiro sem perder forma.",
+    desc: "Visagismo, textura e fixação que seguram a noite inteira. Tranças, coques, meios-presos — tudo pensado pro seu rosto.",
   },
 ];
 
 const benefits = [
   {
-    title: "Sem medo de borrar",
-    text: "A maquiagem aguenta emoção, calor, beijo, foto e festa sem virar preocupação ao longo do dia.",
+    title: "Maquiagem blindada",
+    text: "Técnica de longa duração que aguenta emoção, calor, beijo, lágrima e festa. Você esquece que está maquiada e só vive o dia.",
   },
   {
-    title: "Sem susto no espelho",
-    text: "O resultado precisa parecer você — só que em versão mais luminosa, elegante e segura.",
+    title: "Você no espelho",
+    text: "O resultado parece você, só que no melhor dia da sua vida. Sem máscara, sem estranheza, sem aquele olhar que não é seu.",
   },
   {
-    title: "Sem manhã caótica",
-    text: "Processo com briefing, calma e direção. Menos ansiedade, mais controle e confiança antes da cerimônia.",
+    title: "Manhã sem caos",
+    text: "Atendimento calmo, briefing claro e processo organizado. Você entra na produção relaxada e sai pronta — sem correria nem atraso.",
   },
 ];
 
 const portfolio = [
   { src: "/images/hero-makeup.png", alt: "Maquiagem sendo aplicada em noiva", span: "md:col-span-7 md:row-span-2 min-h-[620px]" },
   { src: "/images/noiva-tranca.jpg", alt: "Noiva com trança elaborada e flores", span: "md:col-span-5 min-h-[300px]" },
-  { src: "/images/gabi-penteando.png", alt: "Gabriela penteando cliente", span: "md:col-span-5 min-h-[300px]" },
-  { src: "/images/retrato-glam.jpg", alt: "Retrato glam da noiva", span: "md:col-span-4 min-h-[300px]" },
+  { src: "/images/gabi-penteando.png", alt: "Equipe Camara Beauty penteando cliente", span: "md:col-span-5 min-h-[300px]" },
+  { src: "/images/retrato-glam.jpg", alt: "Retrato de noiva com maquiagem glam", span: "md:col-span-4 min-h-[300px]" },
   { src: "/images/veu-noiva.jpg", alt: "Ajuste do véu da noiva", span: "md:col-span-4 min-h-[300px]" },
-  { src: "/images/abraco-noiva.jpg", alt: "Abraço de noiva", span: "md:col-span-4 min-h-[300px]" },
+  { src: "/images/abraco-noiva.jpg", alt: "Noiva abraçando amiga", span: "md:col-span-4 min-h-[300px]" },
 ];
 
 const process = [
   {
     step: "01",
-    title: "Briefing real",
-    text: "Evento, horário, referências, vestido, pele e sensação desejada. A conversa já começa a reduzir risco.",
+    title: "Conversa franca",
+    text: "Você conta sobre o evento, suas referências, seu vestido e o que quer sentir no dia. A gente ouve de verdade.",
   },
   {
     step: "02",
-    title: "Prévia, quando faz sentido",
-    text: "No VIP, a prévia tira dúvida antes do casamento. No dia, entra só confiança.",
+    title: "Prévia e alinhamento",
+    text: "No Noiva VIP, a gente testa maquiagem e penteado com até 30 dias de antecedência. No dia do casamento, nada é surpresa.",
   },
   {
     step: "03",
-    title: "Produção calma",
-    text: "A manhã é conduzida com ritmo, técnica e cuidado. O objetivo é sair pronta sem desgaste.",
+    title: "O dia, sem ruído",
+    text: "Produção calma, precisa e focada em durabilidade. Você sai pronta, leve e confiante para o seu momento.",
   },
 ];
 
@@ -119,15 +119,14 @@ export default function Home() {
           <div className="max-w-4xl reveal in">
             <p className="eyebrow mb-6">São Paulo • Beleza nupcial desde 2016</p>
             <h1 className="serif max-w-4xl text-6xl leading-[0.92] md:text-8xl">
-              Noiva não compra maquiagem.
-              <br />Compra segurança para o dia mais fotografado da vida.
+              No dia em que todos vão olhar pra você, a maquiagem precisa durar.
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-white/72 md:text-xl">
-              A Camara Beauty entrega pele blindada, penteado com visagismo e uma manhã sem correria — para você entrar no casamento com calma, presença e um resultado que continua lindo até o fim da festa.
+              Camara Beauty. Maquiagem blindada, penteado com visagismo e uma manhã sem correria — pra você chegar no casamento com calma, presença e o mesmo rosto lindo até o fim da festa.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a href="https://wa.me/5511948645727" className="btn-gold rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Quero reservar minha data</a>
-              <a href="#portfolio" className="btn-ghost rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Ver resultados reais</a>
+              <a href="https://wa.me/5511948645727" className="btn-gold rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Reservar minha data</a>
+              <a href="#portfolio" className="btn-ghost rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Ver trabalhos reais</a>
             </div>
           </div>
         </div>
@@ -149,21 +148,21 @@ export default function Home() {
       <section id="sobre" className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="reveal">
-            <p className="eyebrow mb-4">A profissional</p>
-            <h2 className="serif max-w-3xl text-4xl leading-tight md:text-6xl">A Gabriela entrega beleza que parece natural, só que em versão de auge.</h2>
+            <p className="eyebrow mb-4">Sobre a Camara Beauty</p>
+            <h2 className="serif max-w-3xl text-4xl leading-tight md:text-6xl">Beleza que parece natural, só que na sua melhor versão.</h2>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
-              São 10 anos de mercado, formação em São Paulo, Rio e Kryolan Buenos Aires, e uma obsessão simples: fazer a cliente se reconhecer no espelho e amar o que vê.
+              A Camara Beauty nasceu em 2016 com uma obsessão simples: fazer você se reconhecer no espelho e amar o que vê. São 10 anos de mercado, formação em São Paulo, Rio e na Kryolan em Buenos Aires.
             </p>
             <p className="mt-4 max-w-2xl text-lg leading-8 text-white/72">
-              No ateliê ou no local do casamento, o trabalho é reduzir ansiedade, alinhar expectativa e sair com um resultado que aguente o evento inteiro.
+              No ateliê da Alameda Dino Bueno ou onde o seu casamento for, o trabalho é o mesmo: reduzir sua ansiedade, alinhar cada detalhe e entregar um resultado que aguente a festa inteira.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="tile min-h-[330px] rounded-[2rem] lg:min-h-[420px]">
-              <Image src="/images/gabi-contato.jpg" alt="Gabriela Câmara" width={800} height={1100} className="h-full w-full object-cover" />
+              <Image src="/images/gabi-contato.jpg" alt="Camara Beauty" width={800} height={1100} className="h-full w-full object-cover" />
             </div>
             <div className="tile min-h-[330px] rounded-[2rem] lg:min-h-[420px]">
-              <Image src="/images/gabi-produto.jpg" alt="Gabriela aplicando produto" width={800} height={1100} className="h-full w-full object-cover" />
+              <Image src="/images/gabi-produto.jpg" alt="Aplicação de produto importado" width={800} height={1100} className="h-full w-full object-cover" />
             </div>
           </div>
         </div>
@@ -187,10 +186,10 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="eyebrow mb-4">O que a cliente compra de verdade</p>
-              <h2 className="serif text-4xl md:text-6xl">Tranquilidade, fotos boas e zero arrependimento.</h2>
+              <p className="eyebrow mb-4">Por que Camara Beauty</p>
+              <h2 className="serif text-4xl md:text-6xl">Pra você viver o dia. Não ficar preocupada com ele.</h2>
             </div>
-            <p className="max-w-xl text-white/60">A venda não é de maquiagem. É de sensação, confiança e controle do dia mais emocional do casamento.</p>
+            <p className="max-w-xl text-white/60">Sinal de 50% pra reservar a data. Saldo no dia anterior. Parcelamento em até 12x. Tudo pelo WhatsApp.</p>
           </div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -211,7 +210,7 @@ export default function Home() {
                     <p className="mt-3 max-w-sm text-white/65 leading-7">{s.desc}</p>
                   </div>
                   <div className="text-right text-[var(--champagne)]">
-                    <div className="text-xs uppercase tracking-[0.28em] text-white/40">investimento</div>
+                    <div className="text-xs uppercase tracking-[0.28em] text-white/40">a partir de</div>
                     <div className="mt-2 text-2xl font-medium">{s.price}</div>
                   </div>
                 </div>
@@ -225,9 +224,9 @@ export default function Home() {
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="eyebrow mb-4">Portfólio</p>
-            <h2 className="serif text-4xl md:text-6xl">Fotos reais, acabamento de campanha.</h2>
+            <h2 className="serif text-4xl md:text-6xl">Noivas reais. Resultados que duraram a noite inteira.</h2>
           </div>
-          <p className="max-w-xl text-white/60">A curadoria mostra textura, elegância e emoção. Poucas imagens, todas fortes.</p>
+          <p className="max-w-xl text-white/60">Cada foto é de um atendimento real da Camara Beauty. Sem banco de imagens, sem filtro.</p>
         </div>
 
         <div className="mt-12 grid gap-4 md:grid-cols-12">
@@ -242,8 +241,8 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
-            <p className="eyebrow mb-4">Prova social</p>
-            <h2 className="serif text-4xl md:text-6xl">Depois do casamento, o que fica é a sensação.</h2>
+            <p className="eyebrow mb-4">Quem já viveu</p>
+            <h2 className="serif text-4xl md:text-6xl">O que as noivas dizem depois do sim.</h2>
           </div>
           <div className="grid gap-4">
             {testimonials.map((t) => (
@@ -272,7 +271,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div>
-              <p className="eyebrow mb-4">Processo</p>
+              <p className="eyebrow mb-4">Como funciona</p>
               <h2 className="serif text-4xl md:text-6xl">Um caminho simples para o dia ficar leve.</h2>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
@@ -293,15 +292,15 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
               <p className="eyebrow mb-4">Contato</p>
-              <h2 className="serif text-4xl md:text-6xl">Se a data importa, a decisão não pode esperar.</h2>
+              <h2 className="serif text-4xl md:text-6xl">Sua data pode já estar quase fechando.</h2>
               <p className="mt-6 max-w-xl text-white/65 leading-8">
                 WhatsApp: (11) 9 4864-5727<br />
                 Instagram: @camarabeauty<br />
                 Ateliê: Alameda Dino Bueno, 663 — Centro, São Paulo
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <a href="https://wa.me/5511948645727" className="btn-gold rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Quero falar sobre minha data</a>
-                <a href="https://www.instagram.com/camarabeauty/" className="btn-ghost rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Ver mais trabalhos</a>
+                <a href="https://wa.me/5511948645727" className="btn-gold rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Falar no WhatsApp</a>
+                <a href="https://www.instagram.com/camarabeauty/" className="btn-ghost rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Ver Instagram</a>
               </div>
             </div>
             <div className="grid gap-4 md:grid-cols-2">
