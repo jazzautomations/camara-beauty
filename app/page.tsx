@@ -1,319 +1,428 @@
+"use client";
+
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import { Diamond, Star, HeartHandshake, Sparkles, Instagram, Phone, MapPin, Menu, X } from "lucide-react";
+import Logo from "../components/Logo";
 import Reveal from "./reveal";
 
+const pilars = [
+  { icon: Diamond, title: "Excelência", text: "Qualidade impecável em cada detalhe, do primeiro contato ao retoque final." },
+  { icon: Star, title: "Sofisticação", text: "Beleza com elegância e atendimento premium que faz a diferença." },
+  { icon: HeartHandshake, title: "Personalização", text: "Cada cliente é única. Cada experiência é exclusiva e pensada para você." },
+  { icon: Sparkles, title: "Transformação", text: "Mais que estética, entregamos confiança, autoestima e bem-estar." },
+];
+
 const services = [
-  {
-    name: "Noiva VIP",
-    price: "R$ 2.200",
-    desc: "Tudo incluso: prévia com 30 dias de antecedência, maquiagem blindada, aplique, making-of e suporte completo no dia. Você chega no casamento sem nenhuma dúvida.",
-  },
-  {
-    name: "Noiva Light",
-    price: "R$ 1.400",
-    desc: "Mapeamento facial, maquiagem blindada, suporte para o véu e auxílio no vestido. Experiência completa para um dia sem preocupação.",
-  },
-  {
-    name: "Noiva Civil",
-    price: "R$ 900",
-    desc: "Maquiagem, cílios e penteado para o casamento civil. Elegante, leve e pronto em pouco tempo.",
-  },
-  {
-    name: "Combo Make + Hair",
-    price: "R$ 590",
-    desc: "A escolha mais pedida por madrinhas e convidadas. Maquiagem e penteado num único atendimento.",
-  },
-  {
-    name: "Maquiagem",
-    price: "R$ 380",
-    desc: "Acabamento editorial com produtos importados. Durou mais de 11 horas sem retoque em eventos reais.",
-  },
-  {
-    name: "Penteado",
-    price: "R$ 310",
-    desc: "Visagismo, textura e fixação que seguram a noite inteira. Tranças, coques, meios-presos — tudo pensado pro seu rosto.",
-  },
+  { name: "Noiva VIP", price: "R$ 2.200", desc: "Prévia com 30 dias de antecedência, maquiagem blindada, mapeamento facial, aplique, making-of e suporte total no dia.", featured: true },
+  { name: "Noiva Light", price: "R$ 1.400", desc: "Maquiagem blindada, mapeamento facial, suporte para véu, fotos do making-of e auxílio no vestido." },
+  { name: "Noiva Civil", price: "R$ 900", desc: "Maquiagem completa, cílios postiços e penteado para o casamento civil." },
+  { name: "Combo Make + Hair", price: "R$ 590", desc: "Maquiagem e penteado para madrinhas e convidadas. A escolha mais pedida." },
+  { name: "Maquiagem", price: "R$ 380", desc: "Estilo Beauty com produtos importados e acabamento de longa duração." },
+  { name: "Penteado", price: "R$ 310", desc: "Visagismo, textura e estrutura que seguram o evento inteiro." },
 ];
 
-const benefits = [
-  {
-    title: "Maquiagem blindada",
-    text: "Técnica de longa duração que aguenta emoção, calor, beijo, lágrima e festa. Você esquece que está maquiada e só vive o dia.",
-  },
-  {
-    title: "Você no espelho",
-    text: "O resultado parece você, só que no melhor dia da sua vida. Sem máscara, sem estranheza, sem aquele olhar que não é seu.",
-  },
-  {
-    title: "Manhã sem caos",
-    text: "Atendimento calmo, briefing claro e processo organizado. Você entra na produção relaxada e sai pronta — sem correria nem atraso.",
-  },
-];
-
-const portfolio = [
-  { src: "/images/hero-makeup.png", alt: "Maquiagem sendo aplicada em noiva", span: "md:col-span-7 md:row-span-2 min-h-[620px]" },
-  { src: "/images/noiva-tranca.jpg", alt: "Noiva com trança elaborada e flores", span: "md:col-span-5 min-h-[300px]" },
-  { src: "/images/gabi-penteando.png", alt: "Equipe Camara Beauty penteando cliente", span: "md:col-span-5 min-h-[300px]" },
-  { src: "/images/retrato-glam.jpg", alt: "Retrato de noiva com maquiagem glam", span: "md:col-span-4 min-h-[300px]" },
-  { src: "/images/veu-noiva.jpg", alt: "Ajuste do véu da noiva", span: "md:col-span-4 min-h-[300px]" },
-  { src: "/images/abraco-noiva.jpg", alt: "Noiva abraçando amiga", span: "md:col-span-4 min-h-[300px]" },
-];
-
-const process = [
-  {
-    step: "01",
-    title: "Conversa franca",
-    text: "Você conta sobre o evento, suas referências, seu vestido e o que quer sentir no dia. A gente ouve de verdade.",
-  },
-  {
-    step: "02",
-    title: "Prévia e alinhamento",
-    text: "No Noiva VIP, a gente testa maquiagem e penteado com até 30 dias de antecedência. No dia do casamento, nada é surpresa.",
-  },
-  {
-    step: "03",
-    title: "O dia, sem ruído",
-    text: "Produção calma, precisa e focada em durabilidade. Você sai pronta, leve e confiante para o seu momento.",
-  },
+const gallery = [
+  { src: "/images/hero-makeup.png", alt: "Maquiagem sendo aplicada", span: "md:col-span-2 md:row-span-2" },
+  { src: "/images/noiva-tranca.jpg", alt: "Noiva com trança elaborada", span: "md:col-span-1" },
+  { src: "/images/retrato-glam.jpg", alt: "Retrato glam", span: "md:col-span-1" },
+  { src: "/images/veu-noiva.jpg", alt: "Ajuste do véu", span: "md:col-span-1" },
+  { src: "/images/detalhe-orquidea.jpg", alt: "Detalhe orquídea no penteado", span: "md:col-span-1" },
+  { src: "/images/abraco-noiva.jpg", alt: "Noiva abraçando amiga", span: "md:col-span-2" },
 ];
 
 const testimonials = [
-  {
-    quote: "A maquiagem durou mais de 11 horas sem nenhum retoque. Fiquei intacta do casamento até o dia seguinte.",
-    author: "Noiva",
-  },
-  {
-    quote: "Transmitiu paz e profissionalismo do início ao fim. Todos os convidados elogiaram.",
-    author: "Madrinha",
-  },
-  {
-    quote: "A melhor maquiadora do mundo. Já indiquei para sogra, madrinhas e amigas.",
-    author: "Cliente recorrente",
-  },
+  { name: "Noiva", stars: 5, text: "A maquiagem durou mais de 11 horas sem nenhum retoque. Fiquei intacta do casamento até o dia seguinte." },
+  { name: "Madrinha", stars: 5, text: "Transmitiu paz e profissionalismo do início ao fim. Todos os convidados elogiaram." },
+  { name: "Cliente recorrente", stars: 5, text: "A melhor maquiadora do mundo. Já indiquei para sogra, madrinhas e amigas." },
 ];
 
 export default function Home() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const navLinks = [
+    { href: "#servicos", label: "Serviços" },
+    { href: "#sobre", label: "Sobre" },
+    { href: "#galeria", label: "Galeria" },
+    { href: "#depoimentos", label: "Depoimentos" },
+    { href: "#contato", label: "Contato" },
+  ];
+
   return (
-    <main className="bg-[var(--ink)] text-[var(--ivory)]">
+    <>
       <Reveal />
 
-      <header className="nav-blur fixed top-0 z-50 w-full">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div className="leading-none">
-            <div className="serif text-2xl tracking-[0.28em] text-[var(--champagne)]">C BEAUTY</div>
-            <div className="mt-1 text-[10px] uppercase tracking-[0.4em] text-white/55">Camara Beauty</div>
-          </div>
-          <nav className="hidden gap-8 text-xs uppercase tracking-[0.3em] text-white/60 md:flex">
-            <a href="#sobre" className="hover:text-[var(--champagne)]">Sobre</a>
-            <a href="#servicos" className="hover:text-[var(--champagne)]">Serviços</a>
-            <a href="#portfolio" className="hover:text-[var(--champagne)]">Portfólio</a>
-            <a href="#contato" className="hover:text-[var(--champagne)]">Contato</a>
+      {/* ===== 1. HEADER / NAV ===== */}
+      <header className={`fixed top-0 z-50 w-full ${scrolled ? "nav-solid" : "nav-transparent"}`}>
+        <div className="mx-auto flex max-w-[1200px] items-center justify-between px-5 py-4 md:px-20" style={{ height: "72px" }}>
+          <a href="#" className="flex items-center">
+            <Logo variant="wordmark" color={scrolled ? "dark" : "light"} />
+          </a>
+
+          <nav className="hidden items-center gap-8 md:flex">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="sans text-[13px] font-medium uppercase transition-colors"
+                style={{
+                  letterSpacing: "0.1em",
+                  color: scrolled ? "#0D0D0D" : "#FAFAFA",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#D4AF37")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = scrolled ? "#0D0D0D" : "#FAFAFA")}
+              >
+                {link.label}
+              </a>
+            ))}
           </nav>
-          <a href="https://wa.me/5511948645727" className="btn-gold rounded-full px-5 py-3 text-xs uppercase tracking-[0.25em]">Agendar</a>
+
+          <div className="flex items-center gap-4">
+            <a href="https://wa.me/5511948645727" className="btn-primary hidden md:inline-flex">
+              Agendar Agora
+            </a>
+            <button
+              className="md:hidden"
+              onClick={() => setMenuOpen(!menuOpen)}
+              style={{ color: scrolled ? "#0D0D0D" : "#FAFAFA" }}
+            >
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="md:hidden" style={{ background: "#FFFFFF", borderTop: "1px solid #E5E5E5" }}>
+            <nav className="flex flex-col px-5 py-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="sans py-3 text-[13px] font-medium uppercase"
+                  style={{ letterSpacing: "0.1em", color: "#0D0D0D", borderBottom: "1px solid #E5E5E5" }}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a href="https://wa.me/5511948645727" className="btn-primary mt-4 justify-center">
+                Agendar Agora
+              </a>
+            </nav>
+          </div>
+        )}
       </header>
 
-      <section className="relative min-h-[100svh] overflow-hidden">
-        <Image src="/images/hero-makeup.png" alt="Maquiagem sendo aplicada em noiva" fill priority className="hero-img" />
-        <div className="hero-grad" />
-        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl items-end px-6 pb-24 pt-32 md:pb-32">
-          <div className="max-w-4xl reveal in">
-            <p className="eyebrow mb-6">São Paulo • Beleza nupcial desde 2016</p>
-            <h1 className="serif max-w-4xl text-6xl leading-[0.92] md:text-8xl">
-              No dia em que todos vão olhar pra você, a maquiagem precisa durar.
-            </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-white/72 md:text-xl">
-              Camara Beauty. Maquiagem blindada, penteado com visagismo e uma manhã sem correria — pra você chegar no casamento com calma, presença e o mesmo rosto lindo até o fim da festa.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a href="https://wa.me/5511948645727" className="btn-gold rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Reservar minha data</a>
-              <a href="#portfolio" className="btn-ghost rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Ver trabalhos reais</a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <main>
+        {/* ===== 2. HERO ===== */}
+        <section className="relative flex min-h-[100svh] items-center overflow-hidden">
+          <Image src="/images/hero-makeup.png" alt="Camara Beauty" fill priority className="object-cover" />
+          <div className="hero-overlay" />
 
-      <section className="mx-auto max-w-7xl px-6 py-8">
-        <div className="grid gap-4 md:grid-cols-4">
-          {[
-            "10 anos de experiência",
-            "Formação internacional",
-            "Produtos importados",
-            "Ateliê e domicílio",
-          ].map((item) => (
-            <div key={item} className="price-card rounded-3xl px-5 py-4 text-sm tracking-wide text-white/75">{item}</div>
-          ))}
-        </div>
-      </section>
-
-      <section id="sobre" className="mx-auto max-w-7xl px-6 py-24">
-        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div className="reveal">
-            <p className="eyebrow mb-4">Sobre a Camara Beauty</p>
-            <h2 className="serif max-w-3xl text-4xl leading-tight md:text-6xl">Beleza que parece natural, só que na sua melhor versão.</h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
-              A Camara Beauty nasceu em 2016 com uma obsessão simples: fazer você se reconhecer no espelho e amar o que vê. São 10 anos de mercado, formação em São Paulo, Rio e na Kryolan em Buenos Aires.
-            </p>
-            <p className="mt-4 max-w-2xl text-lg leading-8 text-white/72">
-              No ateliê da Alameda Dino Bueno ou onde o seu casamento for, o trabalho é o mesmo: reduzir sua ansiedade, alinhar cada detalhe e entregar um resultado que aguente a festa inteira.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="tile min-h-[330px] rounded-[2rem] lg:min-h-[420px]">
-              <Image src="/images/gabi-contato.jpg" alt="Camara Beauty" width={800} height={1100} className="h-full w-full object-cover" />
-            </div>
-            <div className="tile min-h-[330px] rounded-[2rem] lg:min-h-[420px]">
-              <Image src="/images/gabi-produto.jpg" alt="Aplicação de produto importado" width={800} height={1100} className="h-full w-full object-cover" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 pb-24">
-        <div className="grid gap-4 lg:grid-cols-12">
-          <div className="tile min-h-[260px] rounded-[2rem] lg:col-span-5">
-            <Image src="/images/preparacao-make.jpg" alt="Preparação de maquiagem" width={1200} height={900} className="h-full w-full object-cover" />
-          </div>
-          <div className="tile min-h-[260px] rounded-[2rem] lg:col-span-4">
-            <Image src="/images/noiva-outdoor.jpg" alt="Noiva em sessão de fotos externa" width={1200} height={900} className="h-full w-full object-cover" />
-          </div>
-          <div className="tile min-h-[260px] rounded-[2rem] lg:col-span-3">
-            <Image src="/images/grupo-feliz.jpg" alt="Grupo de madrinhas" width={1200} height={900} className="h-full w-full object-cover" />
-          </div>
-        </div>
-      </section>
-
-      <section id="servicos" className="bg-white/[0.02] py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="eyebrow mb-4">Por que Camara Beauty</p>
-              <h2 className="serif text-4xl md:text-6xl">Pra você viver o dia. Não ficar preocupada com ele.</h2>
-            </div>
-            <p className="max-w-xl text-white/60">Sinal de 50% pra reservar a data. Saldo no dia anterior. Parcelamento em até 12x. Tudo pelo WhatsApp.</p>
-          </div>
-
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {benefits.map((b) => (
-              <article key={b.title} className="price-card rounded-[1.8rem] p-7">
-                <div className="eyebrow mb-4">{b.title}</div>
-                <p className="text-white/70 leading-8">{b.text}</p>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-16 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {services.map((s) => (
-              <article key={s.name} className="price-card rounded-[1.8rem] p-7">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="serif text-3xl">{s.name}</h3>
-                    <p className="mt-3 max-w-sm text-white/65 leading-7">{s.desc}</p>
-                  </div>
-                  <div className="text-right text-[var(--champagne)]">
-                    <div className="text-xs uppercase tracking-[0.28em] text-white/40">a partir de</div>
-                    <div className="mt-2 text-2xl font-medium">{s.price}</div>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="portfolio" className="mx-auto max-w-7xl px-6 py-24">
-        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="eyebrow mb-4">Portfólio</p>
-            <h2 className="serif text-4xl md:text-6xl">Noivas reais. Resultados que duraram a noite inteira.</h2>
-          </div>
-          <p className="max-w-xl text-white/60">Cada foto é de um atendimento real da Camara Beauty. Sem banco de imagens, sem filtro.</p>
-        </div>
-
-        <div className="mt-12 grid gap-4 md:grid-cols-12">
-          {portfolio.map((item) => (
-            <div key={item.src} className={`tile rounded-[2rem] ${item.span}`}>
-              <Image src={item.src} alt={item.alt} width={1400} height={1100} className="h-full w-full object-cover" />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
-            <p className="eyebrow mb-4">Quem já viveu</p>
-            <h2 className="serif text-4xl md:text-6xl">O que as noivas dizem depois do sim.</h2>
-          </div>
-          <div className="grid gap-4">
-            {testimonials.map((t) => (
-              <div key={t.quote} className="price-card rounded-[1.6rem] p-6">
-                <div className="quote-mark">&ldquo;</div>
-                <p className="-mt-8 pl-1 text-lg text-white/80">{t.quote}</p>
-                <p className="mt-4 text-xs uppercase tracking-[0.25em] text-[var(--champagne)]">{t.author}</p>
+          <div className="relative z-10 mx-auto w-full max-w-[1200px] px-5 md:px-20">
+            <div className="max-w-2xl reveal in">
+              <p
+                className="label-brand mb-6"
+                style={{ color: "#D4AF37" }}
+              >
+                Beleza · Confiança · Transformação
+              </p>
+              <h1
+                className="serif"
+                style={{
+                  fontSize: "clamp(36px, 5vw, 48px)",
+                  fontWeight: 700,
+                  lineHeight: 1.167,
+                  letterSpacing: "-0.02em",
+                  color: "#FAFAFA",
+                }}
+              >
+                Realce sua melhor versão.
+              </h1>
+              <p
+                className="sans mt-6 max-w-xl"
+                style={{
+                  fontSize: "16px",
+                  lineHeight: 1.5,
+                  color: "#FAFAFA",
+                  opacity: 0.85,
+                }}
+              >
+                Maquiagem blindada, penteado com visagismo e produtos importados de marcas premium. A Camara Beauty entrega sofisticação, segurança e resultado — para noivas, madrinhas e eventos em São Paulo.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a href="https://wa.me/5511948645727" className="btn-primary">
+                  Agendar Agora
+                </a>
+                <a
+                  href="#servicos"
+                  className="btn-secondary btn-secondary-dark"
+                >
+                  Ver serviços
+                </a>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="grid gap-4 md:grid-cols-3">
-          <div className="tile min-h-[280px] rounded-[2rem] md:col-span-2">
-            <Image src="/images/veu-noiva.jpg" alt="Ajuste do véu" width={1400} height={900} className="h-full w-full object-cover" />
-          </div>
-          <div className="tile min-h-[280px] rounded-[2rem]">
-            <Image src="/images/detalhe-orquidea.jpg" alt="Detalhe de orquídea no penteado" width={900} height={900} className="h-full w-full object-cover" />
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white/[0.02] py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-            <div>
-              <p className="eyebrow mb-4">Como funciona</p>
-              <h2 className="serif text-4xl md:text-6xl">Um caminho simples para o dia ficar leve.</h2>
             </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              {process.map((p) => (
-                <article key={p.step} className="price-card rounded-[1.6rem] p-6">
-                  <div className="text-[var(--champagne)] text-xs uppercase tracking-[0.3em]">{p.step}</div>
-                  <h3 className="serif mt-4 text-2xl">{p.title}</h3>
-                  <p className="mt-4 text-white/65 leading-7">{p.text}</p>
+          </div>
+        </section>
+
+        {/* ===== 3. PILARES ===== */}
+        <section style={{ background: "#FAFAFA" }}>
+          <div className="mx-auto max-w-[1200px] px-5 py-16 md:px-20 md:py-20">
+            <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
+              {pilars.map((p) => (
+                <div key={p.title} className="flex flex-col items-center text-center reveal">
+                  <div
+                    className="mb-4 flex items-center justify-center"
+                    style={{ width: "40px", height: "40px" }}
+                  >
+                    <p.icon size={40} strokeWidth={2} style={{ color: "#D4AF37" }} />
+                  </div>
+                  <h3 className="heading-3 mb-2" style={{ color: "#0D0D0D" }}>
+                    {p.title}
+                  </h3>
+                  <p className="text-small" style={{ color: "#666666" }}>
+                    {p.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===== 4. SERVIÇOS ===== */}
+        <section id="servicos" style={{ background: "#FFFFFF" }}>
+          <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-20 md:py-24">
+            <div className="mb-12 text-center">
+              <p className="label-brand mb-4" style={{ color: "#D4AF37" }}>Serviços</p>
+              <h2 className="heading-1" style={{ color: "#0D0D0D" }}>
+                Beleza com sofisticação e resultado.
+              </h2>
+              <div className="divider-gold" />
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {services.map((s) => (
+                <article key={s.name} className="card-brand p-8">
+                  {s.featured && (
+                    <div className="mb-4">
+                      <span className="badge-gold">· Destaque</span>
+                    </div>
+                  )}
+                  <h3 className="serif mb-3" style={{ fontSize: "24px", fontWeight: 600, color: "#0D0D0D" }}>
+                    {s.name}
+                  </h3>
+                  <p className="body-text mb-6" style={{ color: "#666666" }}>
+                    {s.desc}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-small" style={{ color: "#BABABA", textTransform: "uppercase", letterSpacing: "0.15em" }}>
+                        Investimento
+                      </span>
+                      <p className="serif" style={{ fontSize: "22px", fontWeight: 600, color: "#D4AF37" }}>
+                        {s.price}
+                      </p>
+                    </div>
+                    <a href="https://wa.me/5511948645727" className="btn-text">
+                      Agendar
+                    </a>
+                  </div>
                 </article>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="contato" className="border-t border-white/10 bg-white/[0.02] py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div>
-              <p className="eyebrow mb-4">Contato</p>
-              <h2 className="serif text-4xl md:text-6xl">Sua data pode já estar quase fechando.</h2>
-              <p className="mt-6 max-w-xl text-white/65 leading-8">
-                WhatsApp: (11) 9 4864-5727<br />
-                Instagram: @camarabeauty<br />
-                Ateliê: Alameda Dino Bueno, 663 — Centro, São Paulo
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a href="https://wa.me/5511948645727" className="btn-gold rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Falar no WhatsApp</a>
-                <a href="https://www.instagram.com/camarabeauty/" className="btn-ghost rounded-full px-7 py-4 text-sm uppercase tracking-[0.25em]">Ver Instagram</a>
+        {/* ===== 5. SOBRE / ESSÊNCIA ===== */}
+        <section id="sobre" style={{ background: "#FAFAFA" }}>
+          <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-20 md:py-24">
+            <div className="grid items-center gap-12 lg:grid-cols-2">
+              <div className="reveal">
+                <p className="label-brand mb-4" style={{ color: "#D4AF37" }}>Essência</p>
+                <h2 className="heading-1 mb-6" style={{ color: "#0D0D0D" }}>
+                  A transformação que você merece.
+                </h2>
+                <div style={{ width: "48px", height: "2px", background: "#D4AF37", marginBottom: "24px" }} />
+                <p className="body-text mb-4" style={{ color: "#4A4A4A" }}>
+                  A Camara Beauty realça a beleza que existe em você com sofisticação, segurança e resultado. Experiências personalizadas que elevam a autoestima e revelam sua melhor versão.
+                </p>
+                <p className="body-text mb-8" style={{ color: "#4A4A4A" }}>
+                  10 anos de mercado, formação internacional e produtos importados de marcas premium. Ateliê na Alameda Dino Bueno ou atendimento no local do seu evento.
+                </p>
+                <div className="grid grid-cols-3 gap-4">
+                  {[
+                    "10 anos de experiência",
+                    "Formação internacional",
+                    "Produtos importados",
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="text-small p-4"
+                      style={{
+                        color: "#666666",
+                        background: "#FFFFFF",
+                        borderRadius: "8px",
+                        boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+                        textAlign: "center",
+                      }}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="tile min-h-[320px] rounded-[2rem]">
-                <Image src="/images/abraco-noiva.jpg" alt="Noiva abraçando amiga" width={1000} height={1200} className="h-full w-full object-cover" />
-              </div>
-              <div className="tile min-h-[320px] rounded-[2rem]">
-                <Image src="/images/retrato-glam.jpg" alt="Retrato de noiva" width={1000} height={1200} className="h-full w-full object-cover" />
+              <div className="grid grid-cols-2 gap-4">
+                <div className="gallery-tile" style={{ minHeight: "400px" }}>
+                  <Image src="/images/gabi-contato.jpg" alt="Camara Beauty" width={600} height={800} className="h-full w-full object-cover" />
+                </div>
+                <div className="gallery-tile" style={{ minHeight: "400px" }}>
+                  <Image src="/images/gabi-produto.jpg" alt="Camara Beauty trabalho" width={600} height={800} className="h-full w-full object-cover" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+
+        {/* ===== 6. GALERIA ===== */}
+        <section id="galeria" style={{ background: "#FFFFFF" }}>
+          <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-20 md:py-24">
+            <div className="mb-12 text-center">
+              <p className="label-brand mb-4" style={{ color: "#D4AF37" }}>Galeria</p>
+              <h2 className="heading-1" style={{ color: "#0D0D0D" }}>
+                Cada detalhe pensado para você.
+              </h2>
+              <div className="divider-gold" />
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+              {gallery.map((item) => (
+                <div key={item.src} className={`gallery-tile ${item.span}`} style={{ minHeight: "300px" }}>
+                  <Image src={item.src} alt={item.alt} width={800} height={800} className="h-full w-full object-cover" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===== 7. DEPOIMENTOS ===== */}
+        <section id="depoimentos" style={{ background: "#1A1A1A" }}>
+          <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-20 md:py-24">
+            <div className="mb-12 text-center">
+              <p className="label-brand mb-4" style={{ color: "#D4AF37" }}>Depoimentos</p>
+              <h2 className="heading-1" style={{ color: "#FAFAFA" }}>
+                Sua beleza, nossa arte.
+              </h2>
+              <div className="divider-gold" />
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              {testimonials.map((t) => (
+                <div
+                  key={t.name}
+                  className="p-8"
+                  style={{
+                    background: "#0D0D0D",
+                    borderRadius: "8px",
+                    border: "1px solid rgba(212,175,55,0.15)",
+                  }}
+                >
+                  <div className="stars-gold mb-4">
+                    {"★".repeat(t.stars)}
+                  </div>
+                  <p className="body-text mb-6" style={{ color: "#FAFAFA", opacity: 0.85, fontStyle: "italic" }}>
+                    &ldquo;{t.text}&rdquo;
+                  </p>
+                  <p className="text-small" style={{ color: "#D4AF37", textTransform: "uppercase", letterSpacing: "0.15em" }}>
+                    {t.name}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===== 8. CTA FINAL ===== */}
+        <section id="contato" style={{ background: "#0D0D0D" }}>
+          <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-20 md:py-24">
+            <div className="text-center">
+              <p className="label-brand mb-6" style={{ color: "#D4AF37" }}>Agende sua transformação</p>
+              <h2 className="serif mb-6" style={{ fontSize: "clamp(32px, 4vw, 42px)", fontWeight: 700, color: "#FAFAFA", lineHeight: 1.25 }}>
+                Realce sua melhor versão.
+              </h2>
+              <p className="body-text mb-10 mx-auto" style={{ color: "#FAFAFA", opacity: 0.7, maxWidth: "500px" }}>
+                Ateliê em São Paulo ou atendimento no local do seu evento. Parcelamento em até 12x no cartão.
+              </p>
+              <a href="https://wa.me/5511948645727" className="btn-primary">
+                Agendar Agora
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== 9. FOOTER ===== */}
+        <footer style={{ background: "#0D0D0D", borderTop: "1px solid rgba(212,175,55,0.15)" }}>
+          <div className="mx-auto max-w-[1200px] px-5 py-12 md:px-20">
+            <div className="grid gap-8 md:grid-cols-3">
+              <div>
+                <Logo variant="full" color="light" />
+                <p className="text-small mt-4" style={{ color: "#666666", letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                  Beleza · Confiança · Transformação
+                </p>
+              </div>
+
+              <div>
+                <h3 className="heading-3 mb-4" style={{ color: "#FAFAFA", fontSize: "14px" }}>Contato</h3>
+                <div className="flex flex-col gap-3">
+                  <a href="https://wa.me/5511948645727" className="flex items-center gap-2 text-small" style={{ color: "#BABABA" }}>
+                    <Phone size={16} strokeWidth={2} style={{ color: "#D4AF37" }} />
+                    (11) 9 4864-5727
+                  </a>
+                  <a href="https://www.instagram.com/camarabeauty/" className="flex items-center gap-2 text-small" style={{ color: "#BABABA" }}>
+                    <Instagram size={16} strokeWidth={2} style={{ color: "#D4AF37" }} />
+                    @camarabeauty
+                  </a>
+                  <p className="flex items-center gap-2 text-small" style={{ color: "#BABABA" }}>
+                    <MapPin size={16} strokeWidth={2} style={{ color: "#D4AF37" }} />
+                    Alameda Dino Bueno, 663 — São Paulo/SP
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="heading-3 mb-4" style={{ color: "#FAFAFA", fontSize: "14px" }}>Navegação</h3>
+                <div className="flex flex-col gap-2">
+                  {navLinks.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      className="text-small"
+                      style={{ color: "#BABABA", transition: "color 0.15s ease" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "#D4AF37")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "#BABABA")}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <hr className="divider-line" style={{ borderColor: "rgba(212,175,55,0.1)", margin: "32px 0" }} />
+
+            <p className="text-small text-center" style={{ color: "#666666" }}>
+              © 2026 CAMARABEAUTY · BEAUTY SALON · Todos os direitos reservados
+            </p>
+          </div>
+        </footer>
+      </main>
+    </>
   );
 }
