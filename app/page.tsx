@@ -73,20 +73,21 @@ const vipIncludes = [
 ];
 
 const otherServices = [
-  { name: "Noiva Light",      price: "R$ 1.400", desc: "Maquiagem blindada, mapeamento facial, penteado, fotos do making-of e auxílio no vestido. Para quem quer o essencial com qualidade premium." },
-  { name: "Noiva Civil",      price: "R$ 900",   desc: "Maquiagem completa, cílios postiços e penteado para o civil. O look certo para um momento íntimo e especial." },
-  { name: "Combo Make + Hair",price: "R$ 590",   desc: "Maquiagem e penteado para madrinhas e convidadas. O pacote mais pedido pelas equipes da noiva." },
-  { name: "Maquiagem",        price: "R$ 380",   desc: "Estilo Beauty com produtos importados e acabamento de longa duração para qualquer evento." },
-  { name: "Penteado",         price: "R$ 310",   desc: "Visagismo, textura e estrutura. Um penteado que aguenta o evento inteiro do início ao fim." },
+  { name: "Noiva Light",       price: "R$ 1.400", desc: "Maquiagem blindada, mapeamento facial, penteado, fotos do making-of e auxílio no vestido. Para quem quer o essencial com qualidade premium." },
+  { name: "Noiva Civil",       price: "R$ 900",   desc: "Maquiagem completa, cílios postiços e penteado para o civil. O look certo para um momento íntimo e especial." },
+  { name: "Combo Make + Hair", price: "R$ 590",   desc: "Maquiagem e penteado para madrinhas e convidadas. O pacote mais pedido pelas equipes da noiva." },
+  { name: "Maquiagem",         price: "R$ 380",   desc: "Estilo Beauty com produtos importados e acabamento de longa duração para qualquer evento." },
+  { name: "Penteado",          price: "R$ 310",   desc: "Visagismo, textura e estrutura. Um penteado que aguenta o evento inteiro." },
 ];
 
+/* Gallery: 6 images in a clean 3-column grid */
 const gallery = [
-  { src: "/images/hero-makeup.png",      alt: "Make aplicação",         span: "md:col-span-2 md:row-span-2" },
-  { src: "/images/noiva-tranca.jpg",     alt: "Penteado trança",        span: "md:col-span-1" },
-  { src: "/images/retrato-glam.jpg",     alt: "Retrato glamour",        span: "md:col-span-1" },
-  { src: "/images/veu-noiva.jpg",        alt: "Detalhe véu",            span: "md:col-span-1" },
-  { src: "/images/detalhe-orquidea.jpg", alt: "Detalhe penteado",       span: "md:col-span-1" },
-  { src: "/images/abraco-noiva.jpg",     alt: "Momento especial",       span: "md:col-span-2" },
+  { src: "/images/retrato-glam.jpg",     alt: "Retrato glamour"      },
+  { src: "/images/detalhe-perola.jpg",   alt: "Detalhe penteado"      },
+  { src: "/images/noiva-tranca.jpg",     alt: "Penteado com trança"   },
+  { src: "/images/veu-noiva.jpg",        alt: "Ajuste do véu"         },
+  { src: "/images/make-aplicacao.jpg",   alt: "Aplicação de maquiagem"},
+  { src: "/images/gabi-penteando.png",   alt: "Penteado profissional" },
 ];
 
 const testimonials = [
@@ -108,11 +109,11 @@ const testimonials = [
 ];
 
 const faqs = [
-  { q: "A prévia está incluída no pacote?", a: "Sim — no Noiva VIP, a prévia presencial acontece até 30 dias antes do casamento. Testamos técnica, produto e estilo até você se apaixonar pelo resultado. No Noiva Light e Civil, a prévia pode ser contratada à parte." },
+  { q: "A prévia está incluída no pacote?",          a: "Sim — no Noiva VIP, a prévia presencial acontece até 30 dias antes do casamento. Testamos técnica, produto e estilo até você se apaixonar pelo resultado. No Noiva Light e Civil, a prévia pode ser contratada à parte." },
   { q: "E se eu não gostar do resultado na prévia?", a: "A prévia existe exatamente para isso. Ajustamos o look quantas vezes for necessário até você chegar ao altar com confiança total — sem surpresas no grande dia." },
-  { q: "Como garantir minha data?", a: "Com 50% de sinal via PIX ou cartão. O restante é pago no dia do evento. As datas são confirmadas por ordem de pagamento — quanto antes você reservar, mais segura fica sua data." },
-  { q: "Atendem no local do evento?", a: "Sim, em toda São Paulo e região. O deslocamento é combinado previamente e adicionado ao valor do pacote. Ateliê fixo na Alameda Dino Bueno, 663 — Bela Vista." },
-  { q: "Atendem madrinhas, mãe da noiva e convidadas?", a: "Sim! Temos pacotes específicos para o grupo — Combo Make + Hair (R$ 590) e Maquiagem avulsa (R$ 380). Me conte o tamanho da equipe e montamos um orçamento completo." },
+  { q: "Como garantir minha data?",                  a: "Com 50% de sinal via PIX ou cartão. O restante é pago no dia do evento. As datas são confirmadas por ordem de pagamento — quanto antes você reservar, mais segura fica sua data." },
+  { q: "Atendem no local do evento?",                a: "Sim, em toda São Paulo e região. O deslocamento é combinado previamente e adicionado ao valor do pacote. Ateliê fixo na Alameda Dino Bueno, 663 — Bela Vista." },
+  { q: "Atendem madrinhas e mãe da noiva?",          a: "Sim! Temos pacotes específicos para o grupo — Combo Make + Hair (R$ 590) e Maquiagem avulsa (R$ 380). Me conte o tamanho da equipe e montamos um orçamento completo." },
 ];
 
 export default function Home() {
@@ -126,11 +127,11 @@ export default function Home() {
   }, []);
 
   const navLinks = [
-    { href: "#pacotes",     label: "Pacotes" },
+    { href: "#pacotes",       label: "Pacotes" },
     { href: "#como-funciona", label: "Como funciona" },
-    { href: "#galeria",     label: "Galeria" },
-    { href: "#depoimentos", label: "Depoimentos" },
-    { href: "#faq",         label: "FAQ" },
+    { href: "#galeria",       label: "Galeria" },
+    { href: "#depoimentos",   label: "Depoimentos" },
+    { href: "#faq",           label: "FAQ" },
   ];
 
   return (
@@ -183,46 +184,106 @@ export default function Home() {
       </header>
 
       <main>
-        {/* ===== HERO ===== */}
-        <section className="relative flex min-h-[100svh] items-center overflow-hidden">
-          <div id="hero-bg" style={{ position: "absolute", top: "-20%", left: 0, right: 0, bottom: "-20%", willChange: "transform" }}>
-            <Image src="/images/hero-makeup.png" alt="Camara Beauty" fill priority className="object-cover" style={{ objectPosition: "center top" }} />
-          </div>
-          <div className="hero-overlay" />
+        {/* ===== HERO — full-bleed with gradient overlay ===== */}
+        <section className="relative" style={{ minHeight: "100svh" }}>
 
-          <div className="relative z-10 mx-auto w-full max-w-[1200px] px-5 md:px-20">
-            <div className="max-w-[620px]">
-              <p className="label-brand mb-5 reveal in" style={{ color: "#D4AF37" }}>
-                Para noivas que exigem o melhor
-              </p>
-              <h1 className="serif reveal in"
-                style={{ fontSize: "clamp(44px, 6vw, 64px)", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.025em", color: "#FAFAFA" }}
-                data-delay="80">
-                O altar não aceita<br />segunda chance.
-              </h1>
-              <p className="sans mt-6 reveal in"
-                style={{ fontSize: "17px", lineHeight: 1.65, color: "#FAFAFA", opacity: 0.82, maxWidth: "520px" }}
-                data-delay="180">
-                Maquiagem blindada e penteado com visagismo que resistem às 14 horas mais fotografadas da sua vida — porque as fotos do seu casamento vão durar para sempre.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4 reveal in" data-delay="280">
-                <a href="https://wa.me/5511948645727" className="btn-cta-hero">
-                  Garantir minha data
-                </a>
-                <a href="#pacotes" className="btn-secondary btn-secondary-dark">
-                  Ver pacotes
-                </a>
+          {/* Image layer — full-bleed */}
+          <div className="absolute inset-0 z-0" id="hero-bg" style={{ willChange: "transform" }}>
+            <Image
+              src="/images/hero-makeup.png"
+              alt="Camara Beauty — beleza de noiva"
+              fill
+              priority
+              className="object-cover"
+              style={{ objectPosition: "60% center" }}
+            />
+            {/* Overlay: dark diagonal gradient for text readability */}
+            <div
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(135deg, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.7) 35%, rgba(13,13,13,0.3) 70%, rgba(13,13,13,0.5) 100%)" }}
+            />
+          </div>
+
+          {/* Social proof floating card — bottom right */}
+          <div
+            className="absolute z-10 hidden md:flex flex-col gap-1"
+            style={{
+              bottom: "48px",
+              right: "48px",
+              background: "rgba(13,13,13,0.85)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              padding: "16px 22px",
+              borderRadius: "8px",
+              border: "1px solid rgba(212,175,55,0.25)",
+            }}
+          >
+            <span style={{ color: "#D4AF37", fontSize: "14px", letterSpacing: "2px" }}>★★★★★</span>
+            <span style={{ color: "#FAFAFA", fontSize: "14px", fontWeight: 600, fontFamily: "var(--font-sans)" }}>
+              500+ noivas atendidas
+            </span>
+            <span style={{ color: "#888", fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "var(--font-sans)" }}>
+              10 anos · São Paulo
+            </span>
+          </div>
+
+          {/* Content */}
+          <div className="relative z-10 flex min-h-[100svh] w-full items-center">
+            <div className="mx-auto w-full max-w-[1200px] px-6 md:px-20">
+              <div className="max-w-[560px]">
+                <p
+                  className="label-brand mb-5 reveal in"
+                  style={{ color: "#D4AF37" }}
+                >
+                  Para noivas que exigem o melhor
+                </p>
+                <h1
+                  className="serif reveal in"
+                  style={{
+                    fontSize: "clamp(42px, 5.5vw, 60px)",
+                    fontWeight: 700,
+                    lineHeight: 1.05,
+                    letterSpacing: "-0.025em",
+                    color: "#FAFAFA",
+                  }}
+                  data-delay="80"
+                >
+                  O altar não aceita<br />segunda chance.
+                </h1>
+                <p
+                  className="sans mt-5 reveal in"
+                  style={{ fontSize: "16px", lineHeight: 1.7, color: "#FAFAFA", opacity: 0.8 }}
+                  data-delay="180"
+                >
+                  Maquiagem blindada e penteado com visagismo que resistem às
+                  14 horas mais fotografadas da sua vida.
+                </p>
+                <div className="mt-7 flex flex-wrap gap-4 reveal in" data-delay="280">
+                  <a href="https://wa.me/5511948645727" className="btn-cta-hero">
+                    Garantir minha data
+                  </a>
+                  <a href="#pacotes" className="btn-secondary btn-secondary-dark">
+                    Ver pacotes
+                  </a>
+                </div>
+                <p
+                  className="sans mt-4 text-[12px] reveal in"
+                  style={{ color: "#FAFAFA", opacity: 0.45, letterSpacing: "0.1em" }}
+                  data-delay="360"
+                >
+                  Consulta gratuita · Resposta em até 2h · Sem compromisso
+                </p>
               </div>
-              <p className="sans mt-5 text-[12px] reveal in" style={{ color: "#FAFAFA", opacity: 0.5, letterSpacing: "0.1em" }} data-delay="360">
-                Consulta gratuita · Resposta em até 2h · Sem compromisso
-              </p>
             </div>
           </div>
 
-          {/* scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 reveal in" data-delay="600"
-            style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "6px", opacity: 0.5 }}>
-            <ChevronDown size={20} style={{ color: "#D4AF37" }} />
+          {/* Scroll cue */}
+          <div
+            className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 reveal in hidden md:flex"
+            data-delay="700"
+            style={{ flexDirection: "column", alignItems: "center", gap: "4px", opacity: 0.4 }}
+          >
+            <ChevronDown size={18} style={{ color: "#D4AF37" }} />
           </div>
         </section>
 
@@ -230,9 +291,9 @@ export default function Home() {
         <div className="trust-strip">
           <div className="trust-strip-inner mx-auto max-w-[1200px] px-5 md:px-20">
             {[
-              { val: "10+", label: "Anos de mercado" },
-              { val: "500+", label: "Noivas atendidas" },
-              { val: "★★★★★", label: "Avaliação no Google" },
+              { val: "10+",      label: "Anos de mercado" },
+              { val: "500+",     label: "Noivas atendidas" },
+              { val: "★★★★★",   label: "Avaliação Google" },
               { val: "Formação", label: "Internacional" },
               { val: "Produtos", label: "Premium importados" },
             ].map((item) => (
@@ -265,7 +326,6 @@ export default function Home() {
             {/* VIP — featured horizontal card */}
             <div className="card-service-featured p-0 mb-8 reveal" data-dir="scale" data-delay="100">
               <div className="grid lg:grid-cols-[1fr_380px]">
-                {/* Left */}
                 <div className="p-8 md:p-10" style={{ borderRight: "1px solid rgba(212,175,55,0.15)" }}>
                   <div className="mb-4 flex items-center gap-3 flex-wrap">
                     <span className="badge-gold">· Mais completo</span>
@@ -294,7 +354,6 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-                {/* Right — includes */}
                 <div className="p-8 md:p-10" style={{ background: "rgba(212,175,55,0.03)" }}>
                   <p className="text-small mb-4" style={{ color: "#D4AF37", textTransform: "uppercase", letterSpacing: "0.2em", fontWeight: 600 }}>
                     O que está incluído
@@ -311,7 +370,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Other services */}
             <p className="label-brand mb-6 reveal" style={{ color: "#BABABA" }} data-delay="80">
               Também disponível
             </p>
@@ -325,11 +383,9 @@ export default function Home() {
                     {s.desc}
                   </p>
                   <div className="flex items-center justify-between">
-                    <div>
-                      <p className="serif" style={{ fontSize: "20px", fontWeight: 600, color: "#D4AF37" }}>
-                        {s.price}
-                      </p>
-                    </div>
+                    <p className="serif" style={{ fontSize: "20px", fontWeight: 600, color: "#D4AF37" }}>
+                      {s.price}
+                    </p>
                     <a href="https://wa.me/5511948645727" className="btn-text" style={{ fontSize: "13px" }}>
                       Agendar →
                     </a>
@@ -353,30 +409,16 @@ export default function Home() {
 
             <div className="grid gap-8 md:grid-cols-3">
               {[
-                {
-                  n: "01",
-                  title: "Consulta",
-                  text: "Fale comigo pelo WhatsApp. Conta a data, o estilo do casamento e o que você imagina para o seu look. Respondo em até 2 horas.",
-                },
-                {
-                  n: "02",
-                  title: "Prévia",
-                  text: "Agendamos uma sessão presencial onde testamos e ajustamos tudo — técnica, produto, estrutura — até você se apaixonar pelo resultado.",
-                },
-                {
-                  n: "03",
-                  title: "O grande dia",
-                  text: "Chego pontualmente com tudo preparado. Você só precisa se sentar, respirar e deixar a transformação acontecer.",
-                },
+                { n: "01", title: "Consulta",     text: "Fale pelo WhatsApp. Conta a data, o estilo do casamento e o que imagina para o seu look. Respondo em até 2 horas." },
+                { n: "02", title: "Prévia",        text: "Sessão presencial onde testamos e ajustamos tudo — técnica, produto, estrutura — até você se apaixonar pelo resultado." },
+                { n: "03", title: "O grande dia",  text: "Chego pontualmente com tudo preparado. Você só precisa se sentar, respirar e deixar a transformação acontecer." },
               ].map((step, i) => (
                 <div key={step.n} className="step-card text-center reveal" data-delay={String(i * 120)}>
                   <div className="step-number">{step.n}</div>
                   <h3 className="serif mb-3" style={{ fontSize: "22px", fontWeight: 600, color: "#FAFAFA" }}>
                     {step.title}
                   </h3>
-                  <p className="body-text" style={{ color: "#888" }}>
-                    {step.text}
-                  </p>
+                  <p className="body-text" style={{ color: "#888" }}>{step.text}</p>
                 </div>
               ))}
             </div>
@@ -394,13 +436,20 @@ export default function Home() {
               <div className="divider-gold" />
             </div>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+            {/* Desktop + Mobile gallery: clean 3-column grid with fixed heights */}
+            <div
+              className="grid gap-4"
+              style={{ gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))" }}
+            >
               {gallery.map((item, i) => (
-                <div key={item.src} className={`gallery-tile ${item.span} reveal`}
-                  style={{ minHeight: "300px" }}
+                <div
+                  key={item.src}
+                  className="gallery-tile reveal"
+                  style={{ height: "380px" }}
                   data-dir="scale"
-                  data-delay={String(i * 80)}>
-                  <Image src={item.src} alt={item.alt} width={800} height={800} className="h-full w-full object-cover" />
+                  data-delay={String((i % 3) * 80)}
+                >
+                  <Image src={item.src} alt={item.alt} fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover" />
                   <div className="gallery-overlay">
                     <span className="text-small" style={{ color: "#FAFAFA", letterSpacing: "0.15em", textTransform: "uppercase" }}>
                       {item.alt}
@@ -411,8 +460,13 @@ export default function Home() {
             </div>
 
             <div className="mt-10 text-center reveal" data-delay="200">
-              <a href="https://www.instagram.com/camarabeauty/" target="_blank" rel="noopener"
-                className="btn-secondary" style={{ gap: "8px" }}>
+              <a
+                href="https://www.instagram.com/camarabeauty/"
+                target="_blank"
+                rel="noopener"
+                className="btn-secondary"
+                style={{ gap: "8px" }}
+              >
                 <Instagram size={16} />
                 Ver mais no Instagram
               </a>
@@ -440,7 +494,9 @@ export default function Home() {
                   </p>
                   <div>
                     <p className="sans" style={{ color: "#FAFAFA", fontWeight: 600, fontSize: "14px" }}>{t.name}</p>
-                    <p className="text-small mt-1" style={{ color: "#D4AF37", textTransform: "uppercase", letterSpacing: "0.15em" }}>{t.role}</p>
+                    <p className="text-small mt-1" style={{ color: "#D4AF37", textTransform: "uppercase", letterSpacing: "0.15em" }}>
+                      {t.role}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -462,7 +518,7 @@ export default function Home() {
                   A Camara Beauty nasce da convicção de que toda noiva merece chegar ao altar com confiança absoluta no próprio look — sem medos, sem ajustes de última hora, sem surpresas.
                 </p>
                 <p className="body-text mb-8" style={{ color: "#4A4A4A" }}>
-                  Com formação internacional, 10 anos de mercado e produtos importados de marcas premium, cada atendimento é pensado para realçar a beleza única de cada cliente. Ateliê na Alameda Dino Bueno ou atendimento no local do seu evento.
+                  Com formação internacional, 10 anos de mercado e produtos importados de marcas premium, cada atendimento é pensado para realçar a beleza única de cada cliente.
                 </p>
                 <div className="grid grid-cols-3 gap-4">
                   <StatCounter value={10}  suffix="+" label="Anos de mercado" />
@@ -494,9 +550,7 @@ export default function Home() {
           <div className="mx-auto max-w-[760px] px-5 py-20 md:px-8 md:py-28">
             <div className="section-header mb-14 reveal" data-dir="scale">
               <p className="label-brand" style={{ color: "#D4AF37" }}>Perguntas frequentes</p>
-              <h2 className="heading-1 mt-3" style={{ color: "#0D0D0D" }}>
-                Tire suas dúvidas.
-              </h2>
+              <h2 className="heading-1 mt-3" style={{ color: "#0D0D0D" }}>Tire suas dúvidas.</h2>
               <div className="divider-gold" />
             </div>
             {faqs.map((faq, i) => (
@@ -512,15 +566,14 @@ export default function Home() {
             background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 65%)",
             top: "50%", left: "50%", transform: "translate(-50%, -50%)", pointerEvents: "none",
           }} />
-
           <div className="relative mx-auto max-w-[1200px] px-5 py-28 md:px-20 md:py-36">
             <div className="text-center">
-              <p className="label-brand mb-6 reveal" style={{ color: "#D4AF37" }}>
-                Reserve sua data
-              </p>
-              <h2 className="serif mb-5 reveal"
+              <p className="label-brand mb-6 reveal" style={{ color: "#D4AF37" }}>Reserve sua data</p>
+              <h2
+                className="serif mb-5 reveal"
                 style={{ fontSize: "clamp(36px, 5.5vw, 56px)", fontWeight: 700, color: "#FAFAFA", lineHeight: 1.1, letterSpacing: "-0.02em" }}
-                data-delay="100">
+                data-delay="100"
+              >
                 Sua data ainda<br />está disponível?
               </h2>
               <p className="body-text mb-3 mx-auto reveal"
@@ -528,12 +581,13 @@ export default function Home() {
                 data-delay="200">
                 Datas para 2026 se esgotam com antecedência. Verifique agora — sem compromisso.
               </p>
-              <p className="body-text mb-10 mx-auto reveal" style={{ color: "#D4AF37", opacity: 0.9, maxWidth: "420px" }} data-delay="240">
+              <p className="body-text mb-10 mx-auto reveal"
+                style={{ color: "#D4AF37", opacity: 0.9, maxWidth: "420px" }}
+                data-delay="240">
                 Consulta gratuita · Resposta em até 2h
               </p>
               <div className="reveal" data-delay="300">
-                <a href="https://wa.me/5511948645727"
-                  className="btn-cta-hero"
+                <a href="https://wa.me/5511948645727" className="btn-cta-hero"
                   style={{ fontSize: "14px", padding: "18px 40px", letterSpacing: "0.12em" }}>
                   Verificar disponibilidade → WhatsApp
                 </a>
